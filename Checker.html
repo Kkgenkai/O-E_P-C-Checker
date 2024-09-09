@@ -1,0 +1,249 @@
+<!-- 
+    1. Odd or Even Checker
+    2. Prime or Composite Checker
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="image/png" sizes="16x16" rel="icon" href="https://img.icons8.com/ios/50/67.png"/>
+        <title>O/E_P/C Checker</title>
+        <style>
+            body{font-family: 'Courier New', Courier, monospace; margin: 0px; padding: 0px; background-image: linear-gradient(-270deg,  rgb(252, 180, 180), #a8b642);}
+            
+            .container{
+                background-image: linear-gradient(-270deg,  rgb(255, 190, 190), #C2D24F);
+                height: 90vh;
+                display: flex;
+                flex-direction: column;
+                border-radius: 200px 0px 200px 0px;
+            }
+            
+            .heading{
+                font-size: 50px;
+                margin: 0px;
+                padding-top: 50px;
+                flex: 1;
+                align-self: center;
+            }
+
+            #numInput {
+                font-family: inherit;
+                width: 100%;
+                border: 0;
+                border-bottom: 2px solid #664c4c;
+                outline: 0;
+                font-size: 1.3rem;
+                color: #664c4c;
+                padding: 7px 0;
+                background: transparent;
+                transition: border-color 0.2s;
+
+            &::placeholder {
+                color: transparent;
+            }
+
+            &:placeholder-shown ~ .form__label {
+                font-size: 1.3rem;
+                cursor: text;
+                top: 20px;
+            }
+            }
+
+            label {
+            /* position: absolute;
+            top: 0; */
+            display: block;
+            transition: 0.2s;
+            font-size: 1.13rem;
+            color: #664c4c;
+            align-self: center;
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            }
+
+            #numInput:focus {
+            ~ .form__label {
+                position: absolute;
+                top: 0;
+                display: block;
+                transition: 0.2s;
+                font-size: 1rem;
+                color:  #11998e;
+                font-weight:700;    
+            }
+            padding-bottom: 6px;  
+            font-weight: 700;
+            border-width: 3px;
+            border-image: linear-gradient(to right,  #11998e, #38ef7d);
+            border-image-slice: 1;
+            }
+            /* reset input */
+            #numInput{
+            &:required,&:invalid { box-shadow:none; }
+            }        
+
+            
+            #submit{
+                display: flex;
+                width: 9.2%;
+                position: relative;
+                background-image: linear-gradient(to right,  #11998e, #38ef7d);
+                border-radius: 4em;
+                border: 2px solid #5ee4b1d3;
+                font-size: 16px;
+                font-weight: bold;
+                color: white;
+                padding: 0.8em 1.8em 0.8em 1.8em;
+                cursor:pointer;
+                user-select:none;
+                text-align: center;
+                text-decoration: none;
+                cursor: pointer;
+                transition-duration: 0.4s;
+                -webkit-transition-duration: 0.4s; /* Safari */
+
+                align-self: center;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            #submit:hover {
+                transition-duration: 0.5s;
+                background-image: linear-gradient(to right,  #5ac2b9, #3bff86);
+                color: #ffffff;
+                text-decoration: none;
+            }
+
+            #submit:after {
+                content: "";
+                display: block;
+                position: absolute;
+                border-radius: 4em;
+                left: 0;
+                top:0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: all 0.5s;
+                box-shadow: 0 0 10px 40px white;
+            }
+
+            #submit:active:after {
+                box-shadow: 0 0 0 0 white;
+                position: absolute;
+                border-radius: 4em;
+                left: 0;
+                top:0;
+                opacity: 1;
+                transition: 0s;
+            }
+
+            #submit:active {
+                top: 1px;
+            }
+
+            @keyframes reveal {
+                0%{box-shadow: 10px 10px 50px 50px inset #F7EEEE;}
+                50%{box-shadow: 5px 5px 30px 30px inset #F7EEEE;}
+                80%{box-shadow: 0px 0px 10px 10px inset #ffd9fc;}
+                100%{box-shadow: 0px 0px 50px 50px inset #ffe3fd;}
+            }
+
+            @keyframes waiting {
+                0%{opacity: 0;}
+                100%{opacity: 1}
+            }
+
+            .answer{
+                animation-name: waiting;
+                animation-duration: 1.5s;
+                animation-iteration-count: 1;
+            }
+            .answerDiv{
+                align-self: center;
+                width: 50%;
+                text-align: center;
+            }
+            .answerDivAnim{
+                animation-name: reveal;
+                animation-duration: 1s;
+                animation-iteration-count: 1;
+                border-radius: 60px 0px 60px 0px;
+            }
+
+            span{
+                animation-name: waiting;
+                animation-duration: 900ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+            }
+        </style>
+
+        <!-- Google Font's Imports -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Honk&family=Rubik+Glitch+Pop&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Honk&family=Rubik+Glitch+Pop&family=Single+Day&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1 class="heading">✩｡°⋆Welcome⋆｡°✩</h1>
+            <label for="numInput">Number<input id="numInput" type="number" name="numInput" placeholder="0"></label>
+            <button id="submit">Submit</button>
+            <div class="answerDiv"><h1 id="answer"><span>...</span></h1></div>
+        </div>
+        <script>
+            let pri_comp_checker = function(inputValue) {
+                for(let i=2; i< inputValue; i++){
+                    if(inputValue % i === 0){
+                        return "and a Composite Number.";
+                    }
+                }
+                return "and a Prime Number.";
+            }
+        
+            let odd_eve_checker = (inputValue)=>{
+                if(inputValue % 2 === 0){
+                    return "Number " + inputValue + " is an Even ";
+                }
+                return "Number " + inputValue + " is an Odd ";
+            }
+        
+            const containerDiv = document.getElementsByClassName('container')[0];
+            const numInput = document.getElementById('numInput');
+            const sub_btn = document.getElementById('submit');
+            const answer = document.getElementById('answer');
+            const answerDiv = document.querySelector('.answerDiv');
+        
+            let inputValue = 0;
+        
+            containerDiv.addEventListener('click', (event)=>{
+                if(event.target.id === "submit"){
+                    if(numInput.value === '')
+                        inputValue = 0;
+                    else{
+                        inputValue = parseInt(numInput.value);
+                    }
+
+                    answerDiv.classList.toggle('answerDivAnim');
+                    answer.classList.toggle('answer');
+                        if(inputValue == 0){
+                            answer.textContent = "Number 0 is an Even Number That is Neither Prime nor Composite.";
+                        }else if(typeof(inputValue) === 'number'){
+                            answer.textContent = odd_eve_checker(inputValue) + pri_comp_checker(inputValue);
+                        }
+                    answerDiv.addEventListener('animationend', (event)=>{
+                        answerDiv.classList.remove('answerDivAnim');
+                        answer.classList.remove('answer');
+                    })                
+                }
+            });
+        </script>
+    </body>
+</html>
